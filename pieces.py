@@ -6,7 +6,8 @@ class ChessPiece:
 
 
 class Pawn(ChessPiece):
-    pass
+    def avail_moves(self):
+        return self.position
 
 class Knight(ChessPiece):
     pass

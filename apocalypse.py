@@ -1,6 +1,7 @@
 #Apocalypse: A chess like game.
 
 import pandas as pd
+import pieces
 
 columns = ['a', 'b', 'c', 'd', 'e']
 ind = [5, 4, 3, 2, 1]
@@ -15,3 +16,9 @@ initial_setup = [['BK1', 'BP2', 'BP3', 'BP4', 'BK2'],
 
 chess_board = pd.DataFrame(initial_setup, ind, columns)
 print(chess_board)
+
+BP1 = pieces.Pawn("BP1", "a4")
+
+# print(chess_board.at[5, 'a'])
+print(chess_board[chess_board['a'] == 'WP1'])
+
