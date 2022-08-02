@@ -33,28 +33,36 @@ chess_board = pd.DataFrame(initial_setup, ind, columns)
 # print(type(chess_board.at['5', 'a']))
 
 
-select_piece = ''
+
 # Get input from player asking them what piece they want to move based on 
 # the coordinates
-while True:
-    select_piece = str(input('What piece would you like to move?'))
-    found = False
-    for col in columns:
-        if select_piece[0] == col:
-            found = False
-            for i in ind:
-                i_int = int(i)
-                if select_piece[1] == str(i_int + 1):
-                    print('found')
-                    found = True
+
+#TODO: CHECK IF COORDINATE HAS A CHESS PIECE THAT PLAYER OWNS
+def player_piece_select():
+    select_piece = ''
+    while True:
+        select_piece = str(input('What piece would you like to move?'))
+        found = False
+        for col in columns:
+            if select_piece[0] == col:
+                found = False
+                for i in ind:
+                    i_int = int(i)
+                    if select_piece[1] == str(i_int + 1):
+                        print('found')
+                        found = True
+                        break
+                    else:
+                        print('not found')
+                if found == True:
                     break
-                else:
-                    print('not found')
-            if found == True:
-                break
+            else:
+               print('not found')
+        if found == True:
+            break
         else:
-           print('not found')
-    if found == True:
-        break
-    else:
-        print('Not a valid coordinate!')
+            print('Not a valid coordinate!')
+    return select_piece
+
+active_piece = player_piece_select()
+print(active_piece)
