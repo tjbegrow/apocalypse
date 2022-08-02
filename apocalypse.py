@@ -8,17 +8,27 @@ ind = [5, 4, 3, 2, 1]
 # Piece placement. BK = Black Kight BP = Black Pawn WK = White Kight 
 # WP = White Pawn
 
-initial_setup = [['BK1', 'BP2', 'BP3', 'BP4', 'BK2'],
-                 ['BP1', 'O', 'O', 'O', 'BP5'],
+initial_setup = [[pieces.Knight('BK1','a5'), 
+                  pieces.Pawn('BP2','b5'),
+                  pieces.Pawn('BP3','c5'),
+                  pieces.Pawn('BP4','d5'),
+                  pieces.Knight('BK2','e5')],
+                 [pieces.Pawn('BP1','a4'), 'O', 'O', 'O', 
+                  pieces.Pawn('BP5','e4'),],
                  ['O', 'O', 'O', 'O' ,'O'],
-                 ['WP1', 'O', 'O', 'O', 'WP5'],
-                 ['WK1', 'WP2', 'WP3', 'WP4', 'WK2']]
+                 [pieces.Knight('WP1','a2'), 'O', 'O', 'O',
+                  pieces.Knight('WP5','e2')],
+                 [pieces.Knight('WK1','a1'),
+                  pieces.Pawn('WP2','b1'),
+                  pieces.Pawn('WP3','c1'), 
+                  pieces.Pawn('WP4','d1'),
+                  pieces.Knight('WK2','e1')]]
 
 chess_board = pd.DataFrame(initial_setup, ind, columns)
 print(chess_board)
 
-BP1 = pieces.Pawn("BP1", "a4")
+# BP1 = pieces.Pawn("BP1", "a4")
 
 # print(chess_board.at[5, 'a'])
-print(chess_board[chess_board['a'] == 'WP1'])
+# print(chess_board[chess_board['a'] == 'WP1']['a'])
 
