@@ -47,8 +47,7 @@ def player_piece_select():
             if select_piece[0] == col:
                 found = False
                 for i in ind:
-                    i_int = int(i)
-                    if select_piece[1] == str(i_int + 1):
+                    if select_piece[1] == i:
                         print('found')
                         found = True
                         break
