@@ -4,7 +4,7 @@ import pandas as pd
 import pieces
 
 columns = ['a', 'b', 'c', 'd', 'e']
-ind = [5, 4, 3, 2, 1]
+ind = ['5', '4', '3', '2', '1']
 # Piece placement. BK = Black Kight BP = Black Pawn WK = White Kight 
 # WP = White Pawn
 
@@ -25,10 +25,32 @@ initial_setup = [[pieces.Knight('BK1','a5'),
                   pieces.Knight('WK2','e1')]]
 
 chess_board = pd.DataFrame(initial_setup, ind, columns)
-print(chess_board)
+# print(chess_board)
 
 # BP1 = pieces.Pawn("BP1", "a4")
 
-# print(chess_board.at[5, 'a'])
-# print(chess_board[chess_board['a'] == 'WP1']['a'])
+print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
+print(type(chess_board.at['5', 'a']))
 
+while True:
+    select_piece = str(input('What piece would you like to move?'))
+    found = False
+    for col in columns:
+        if select_piece[0] == col:
+            found = False
+            for i in ind:
+                i_int = int(i)
+                if select_piece[1] == str(i_int + 1):
+                    print('found')
+                    found = True
+                    break
+                else:
+                    print('not found')
+            if found == True:
+                break
+        else:
+           print('not found')
+    if found == True:
+        break
+    else:
+        print('Not a valid coordinate!')
