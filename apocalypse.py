@@ -29,9 +29,13 @@ chess_board = pd.DataFrame(initial_setup, ind, columns)
 
 # BP1 = pieces.Pawn("BP1", "a4")
 
-print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
-print(type(chess_board.at['5', 'a']))
+# print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
+# print(type(chess_board.at['5', 'a']))
 
+
+select_piece = ''
+# Get input from player asking them what piece they want to move based on 
+# the coordinates
 while True:
     select_piece = str(input('What piece would you like to move?'))
     found = False
