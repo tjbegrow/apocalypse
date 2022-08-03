@@ -2,11 +2,13 @@ class ChessPiece:
     def __init__(self, name, position):
         self.name = name
         self.position = position
-
-
-
+        
 class Pawn(ChessPiece):
-    pass
+    def __init__(self, name, position, symbol):
+        super().__init__(name, position)
+        self.symbol = symbol
 
 class Knight(ChessPiece):
-    pass
+    def __init__(self, name, position, symbol):
+        super().__init__(name, position)
+        self.symbol = symbol
