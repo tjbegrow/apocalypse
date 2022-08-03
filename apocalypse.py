@@ -38,16 +38,16 @@ chess_board = pd.DataFrame(initial_setup, ind, columns)
 # the coordinates
 
 #TODO: CHECK IF COORDINATE HAS A CHESS PIECE THAT PLAYER OWNS
-def player_piece_select():
-    select_piece = ''
+def coord_select():
+    coord = ''
     while True:
-        select_piece = str(input('What piece would you like to move?'))
+        coord = str(input('What piece would you like to move?'))
         found = False
         for col in columns:
-            if select_piece[0] == col:
+            if coord[0] == col:
                 found = False
                 for i in ind:
-                    if select_piece[1] == i:
+                    if coord[1] == i:
                         print('found')
                         found = True
                         break
@@ -61,7 +61,5 @@ def player_piece_select():
             break
         else:
             print('Not a valid coordinate!')
-    return select_piece
+    return coord
 
-active_piece = player_piece_select()
-print(active_piece)
