@@ -30,7 +30,7 @@ chess_board = pd.DataFrame(initial_setup, ind, columns)
 # BP1 = pieces.Pawn("BP1", "a4")
 
 # print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
-# print(type(chess_board.at['5', 'a']))
+# print(chess_board.at['3', 'c'] == 'O')
 
 
 
@@ -38,28 +38,49 @@ chess_board = pd.DataFrame(initial_setup, ind, columns)
 # the coordinates
 
 #TODO: CHECK IF COORDINATE HAS A CHESS PIECE THAT PLAYER OWNS
-def coord_select():
+
+def select_piece():
+    piece_selected = None
+    while True:
+        coord = select_coord()
+        if chess_board.at[coord[1], coord[0]] == 'O':
+            print('No piece found at that coordinate')
+            continue
+        else:
+            piece_selected = chess_board.at[coord[1], coord[0]]
+            if piece_selected.name[0] == 'B':
+                continue
+            else:
+                print("You selected {} at position {}".format(piece_selected.name, piece_selected.position))
+                break
+    return piece_selected
+            
+
+
+
+def select_coord():
     coord = ''
     while True:
-        coord = str(input('What piece would you like to move?'))
+        coord = str(input('What piece would you like to move?\n▶'))
         found = False
         for col in columns:
             if coord[0] == col:
                 found = False
                 for i in ind:
                     if coord[1] == i:
-                        print('found')
+                        # print('found')
                         found = True
                         break
-                    else:
-                        print('not found')
+                    # else:
+                        # print('not found')
                 if found == True:
                     break
-            else:
-               print('not found')
+            # else:
+               # print('not found')
         if found == True:
             break
         else:
             print('Not a valid coordinate!')
     return coord
 
+print(select_piece())
