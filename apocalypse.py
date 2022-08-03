@@ -84,4 +84,13 @@ def select_coord():
     return coord
 
 if __name__ == '__main__':
-    print(select_piece())
+    print('''---------Apocalypse--------
+
+(\__/) (\__/) (\__/) (\__/)
+ |oo|   |oo|   |oo|   |oo|
+ (OO)   (OO)   (OO)   (OO) 
+
+The classic C.S. Lewis chess varient, by Tyler Begrow
+-----------------------------------------------------
+''')
+    current_piece = select_piece()
