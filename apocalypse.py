@@ -83,4 +83,5 @@ def select_coord():
             print('Not a valid coordinate!')
     return coord
 
-print(select_piece())
+if __name__ == '__main__':
+    print(select_piece())
