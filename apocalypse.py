@@ -43,7 +43,7 @@ def update_board(chess_board):
             if type(item) == pieces.Pawn:
                 chessboard_display.at[ind, index[0]] = item.symbol
             if type(item) == pieces.Knight:
-                chess_boarddisplay.at[ind, index[0]] = item.symbol
+                chessboard_display.at[ind, index[0]] = item.symbol
     print(chessboard_display)
 
 
@@ -67,11 +67,11 @@ def select_piece(select_coord):
     piece_selected = None
     while True:
         coord = select_coord()
-        if chess_board.at[coord[1], coord[0]] == 'O':
+        if chessboard.at[coord[1], coord[0]] == 'O':
             print('No piece found at that coordinate')
             continue
         else:
-            piece_selected = chess_board.at[coord[1], coord[0]]
+            piece_selected = chessboard.at[coord[1], coord[0]]
             if piece_selected.name[0] == 'B':
                 continue
             else:
@@ -126,6 +126,6 @@ The classic C.S. Lewis chess varient, by Tyler Begrow
 ''')
     update_board(chessboard)
     print()
-    current_piece = select_piece()
+    current_piece = select_piece(select_coord)
     
 
