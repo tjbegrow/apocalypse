@@ -24,18 +24,27 @@ initial_setup = [[pieces.Knight('BK1', 'a5', '\u265E'),
                   pieces.Pawn('WP4', 'd1', '\u2659'),
                   pieces.Knight('WK2', 'e1', '\u2658')]]
 
-chess_board = pd.DataFrame(initial_setup, ind, columns)
+chessboard = pd.DataFrame(initial_setup, ind, columns)
 
 def update_board(chess_board):
-    chess_board_display = chess_board.copy()
-    for index, row in chess_board.iteritems():
+    """Updates the displayed chessboard.
+    
+    Args:
+      chessboard: the logical DataFrame chessboard
+    
+    Side Effect: 
+       Prints current chessboard configuration to terminal.
+    """
+
+    chessboard_display = chessboard.copy()
+    for index, row in chessboard.iteritems():
         for ind, item in row.iteritems():
             # print(type(ind))
             if type(item) == pieces.Pawn:
-                chess_board_display.at[ind, index[0]] = item.symbol
+                chessboard_display.at[ind, index[0]] = item.symbol
             if type(item) == pieces.Knight:
-                chess_board_display.at[ind, index[0]] = item.symbol
-    print(chess_board_display)
+                chess_boarddisplay.at[ind, index[0]] = item.symbol
+    print(chessboard_display)
 
 
 # print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
@@ -45,7 +54,16 @@ def update_board(chess_board):
 # the coordinates
 
 #TODO: Write docstrings for select_piece and select_coord()
-def select_piece():
+def select_piece(select_coord):
+    """Calls select_coord() and returns the piece object if valid
+       
+    Args:
+      select_coord: the select_coord function to get the user
+      coordinate
+    
+    Returns:
+      piece_selected: A valid piece that is the player's
+    """
     piece_selected = None
     while True:
         coord = select_coord()
@@ -63,6 +81,15 @@ def select_piece():
 
 
 def select_coord():
+    """Gets coordinate from user and returns it if valid
+    
+    Returns:
+      coord: A valid coordinate selected by the user.
+    
+    Side Effects:
+      This will print "Not a valid coordinate!" if the selection was
+      not valid
+    """
     coord = ''
     while True:
         coord = str(input('What piece would you like to move?\n▶'))
@@ -97,7 +124,7 @@ if __name__ == '__main__':
 The classic C.S. Lewis chess varient, by Tyler Begrow
 -----------------------------------------------------
 ''')
-    update_board(chess_board)
+    update_board(chessboard)
     print()
     current_piece = select_piece()
     
