@@ -26,16 +26,16 @@ initial_setup = [[pieces.Knight('BK1', 'a5', '\u265E'),
 
 chess_board = pd.DataFrame(initial_setup, ind, columns)
 
-chess_board_display = chess_board.copy()
-
-for index, row in chess_board.iteritems():
-    for ind, item in row.iteritems():
-        # print(type(ind))
-        if type(item) == pieces.Pawn:
-            chess_board_display.at[ind, index[0]] = item.symbol
-        if type(item) == pieces.Knight:
-            chess_board_display.at[ind, index[0]] = item.symbol
-print(chess_board_display)
+def update_board(chess_board):
+    chess_board_display = chess_board.copy()
+    for index, row in chess_board.iteritems():
+        for ind, item in row.iteritems():
+            # print(type(ind))
+            if type(item) == pieces.Pawn:
+                chess_board_display.at[ind, index[0]] = item.symbol
+            if type(item) == pieces.Knight:
+                chess_board_display.at[ind, index[0]] = item.symbol
+    print(chess_board_display)
 
 
 # print(chess_board.at['5', 'a'].name) #Return the name of the Chess object
@@ -44,6 +44,7 @@ print(chess_board_display)
 # Get input from player asking them what piece they want to move based on 
 # the coordinates
 
+#TODO: Write docstrings for select_piece and select_coord()
 def select_piece():
     piece_selected = None
     while True:
@@ -96,6 +97,8 @@ if __name__ == '__main__':
 The classic C.S. Lewis chess varient, by Tyler Begrow
 -----------------------------------------------------
 ''')
+    update_board(chess_board)
+    print()
     current_piece = select_piece()
-    # print(chess_board_visual)
+    
 
